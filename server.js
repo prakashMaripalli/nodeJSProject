@@ -21,6 +21,15 @@ app.get('/product', async (req, res) => {
         res.status(500).json({ message: error.mesage })
     }
 })
+app.get('/employeDetails', async (req, res) => {
+    try {
+        const employe = await EmployeDetails.find({});
+        res.status(200).json(employe)
+    } catch (er) {
+        console.log(er.mesage)
+        res.status(500).json({ message: er.mesage })
+    }
+})
 app.post('/employeDetails', async (req, res) => {
     try {
         const employeDetails = await EmployeDetails.create(req.body)
